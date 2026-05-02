@@ -77,7 +77,12 @@
     h2 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1.5rem; color: var(--titulo); }
     h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--titulo); }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding: 5rem 0; border-top: 1px solid var(--borda); }
+    section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--borda);
+      min-height: 100vh;
+      scroll-margin-top: 80px;
+    }
     .bg-secondary { background-color: var(--card-bg); }
     .text-accent { color: var(--destaque); }
     .text-glow { text-shadow: 0 0 12px var(--glow); }
@@ -1010,6 +1015,7 @@
   }
   createRings();
   const contactForm = document.getElementById('contactForm');
+
   const formStatus = document.getElementById('formStatus');
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
