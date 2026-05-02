@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Portfólio de Kauã Restoff - Desenvolvedor Full Stack, Técnico em Informática e entusiasta de UI/UX.">
+  <meta name="author" content="Kauã Restoff de Oliveira">
+  <title>Restoff</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23178582'/%3E%3Cstop offset='100%25' stop-color='%23BFA181'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='70' font-weight='bold' font-family='Arial, sans-serif' fill='url(%23grad)'%3EKR%3C/text%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.7;
+    }
+    /* TEMA CLARO */
+    :root, body.theme-light {
+      --fundo: #e8e8e8;
+      --texto: #000000;
+      --texto-sec: #4a4a4a;
+      --titulo: #001a33;
+      --destaque: #000530;
+      --destaque-hover: #0f2238;
+      --borda: rgba(10,24,40,0.2);
+      --card-bg: rgba(10,24,40,0.08);
+      --vidro: rgba(255,255,255,0.75);
+      --glass-border: rgba(10,24,40,0.25);
+      --glow: rgba(10,24,40,0.2);
+      --input-bg: white;
+      --btn-demo-color: #000000;
+    }
+    /* TEMA ESCURO AZUL (Lua) */
+    body.theme-dark-blue {
+      --fundo: #01142b;
+      --texto: #e8e8e8;
+      --texto-sec: #c0c0c0;
+      --titulo: #f1f1f1;
+      --destaque: #178582;
+      --destaque-hover: #6bbdbb;
+      --borda: rgba(191,161,129,0.35);
+      --card-bg: rgba(10,25,40,0.7);
+      --vidro: rgba(1, 13, 26, 0.85);
+      --glass-border: rgba(0, 0, 0, 0.45);
+      --glow: rgba(191,161,129,0.4);
+      --input-bg: rgba(10,25,40,0.9);
+      --btn-demo-color: #ffffff;
+    }
+    /* TEMA DARK MODE PRETO (Computador) - contraste entre elementos */
+    body.theme-dark-black {
+      --fundo: #0a0a0a;
+      --texto: #e0e0e0;
+      --texto-sec: #c5c5c5;
+      --titulo: #fafafa;
+      --destaque: #178582;
+      --destaque-hover: #03232b;
+      --borda: rgba(14, 8, 51, 0.308);
+      --card-bg: rgba(30,30,40,0.85);
+      --vidro: rgba(3, 7, 17, 0.9);
+      --glass-border: rgba(0, 0, 0, 0.5);
+      --glow: rgba(255, 240, 240, 0.4);
+      --input-bg: rgba(159, 161, 167, 0.9);
+      --btn-demo-color: #ffffff;
+    }
+    body {
+      background-color: var(--fundo);
+      color: var(--texto);
+    }
+    h1 { font-size: clamp(2.8rem, 8vw, 4rem); }
+    h2 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1.5rem; color: var(--titulo); }
+    h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--titulo); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; border-top: 1px solid var(--borda); }
+    .bg-secondary { background-color: var(--card-bg); }
+    .text-accent { color: var(--destaque); }
+    .text-glow { text-shadow: 0 0 12px var(--glow); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .8rem 2rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      transition: .2s;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background-color: var(--destaque);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .btn-primary:hover {
+      background-color: var(--destaque-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--destaque);
+      color: var(--destaque);
+    }
+    .btn-outline:hover {
+      background: var(--destaque);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: rgba(23,133,130,0.2);
+      border: 1px solid var(--destaque);
+      color: var(--btn-demo-color);
+      backdrop-filter: blur(4px);
+    }
+    .btn-secondary:hover {
+      background: var(--destaque);
+      color: #fff;
+    }
+    .skill-card, .accordion-item, .projeto-card, .idioma-card, .form-contato, .contact-btn, .theme-toggle, .lang-toggle, header.scrolled, footer {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border: 1px solid var(--glass-border);
+    }
+    .ring {
+      opacity: 0.2;
+      filter: blur(80px);
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: .2s;
+      padding: 1rem 0;
+    }
+    header.scrolled {
+      background: var(--vidro);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--destaque), var(--titulo));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0 auto;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--texto);
+      transition: .2s;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--destaque); }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--destaque);
+      box-shadow: 0 0 8px var(--destaque);
+    }
+    .theme-toggle, .lang-toggle {
+      background: var(--card-bg);
+      border-radius: 40px;
+      padding: .4rem .9rem;
+      cursor: pointer;
+      color: var(--texto);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 500;
+    }
+    .menu-toggle {
+      display: none;
+      background: 0 0;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--texto);
+    }
+    .floating-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.2;
+      animation: floatRing 18s infinite ease-in-out;
+    }
+    @keyframes floatRing {
+      0% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(30px,-30px) scale(1.1); }
+      100% { transform: translate(-20px,20px) scale(1); }
+    }
+    @media (max-width: 900px) {
+      .menu-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 70%;
+        height: calc(100vh - 70px);
+        background: var(--vidro);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.8rem;
+        transition: left 0.3s;
+        border-right: 1px solid var(--glass-border);
+        z-index: 99;
+      }
+      .nav-links.active { left: 0; }
+      .header-actions { gap: 0.5rem; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 3rem 0; }
+      .container { padding: 0 1rem; }
+      h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+      h3 { font-size: 1.3rem; }
+      #hero { padding: 2rem 0; text-align: center; }
+      #hero .container { display: flex; flex-direction: column; align-items: center; }
+      #hero p { margin-left: auto !important; margin-right: auto !important; }
+      #hero div[style*="display:flex"] { justify-content: center !important; }
+      #sobre .container > div, #carreira .container > div {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+      }
+      #sobre .container > div > div:first-child { order: 1; display: flex; justify-content: center; }
+      #sobre .container > div > div:last-child { order: 2; }
+      #carreira .container > div > div:first-child { order: 1; }
+      #carreira .container > div > div:last-child { order: 2; }
+      .sobre-img-wrapper { max-width: 60% !important; margin: 0 auto; }
+      #curriculo .container > div:first-of-type { grid-template-columns: 1fr !important; gap: 1rem; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.8rem; }
+      .skill-card { padding: 0.8rem 0.3rem; }
+      .skill-card i { font-size: 1.8rem; }
+      .skill-card span { font-size: 0.75rem; }
+      .soft-tag { padding: 0.3rem 1rem; font-size: 0.8rem; }
+      .contact-buttons { flex-direction: column; align-items: stretch; gap: 1rem; }
+      .contact-btn { justify-content: center; width: 100%; }
+      .form-contato { padding: 1.5rem; }
+      .accordion-header { font-size: 0.95rem; padding: 0.8rem 1rem; }
+      footer { padding: 1.5rem; }
+      .projetos-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .projeto-card .projeto-img { display: none; }
+      .projeto-card .projeto-info p:last-of-type { display: none; }
+      .projeto-card .projeto-mobile-extra { display: none; }
+      .projeto-card.expanded .projeto-mobile-extra {
+        display: block;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-top: 1px solid var(--glass-border);
+        background: var(--card-bg);
+        border-radius: 0.8rem;
+      }
+      .projeto-mobile-extra .mobile-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .projeto-mobile-extra .mobile-img {
+        width: 120px;
+        height: auto;
+        border-radius: 0.8rem;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .projeto-mobile-extra .mobile-info {
+        text-align: center;
+        width: 100%;
+      }
+      .projeto-mobile-extra .mobile-info p {
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: justify;
+      }
+      .projeto-mobile-extra .mobile-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .projeto-mobile-extra .mobile-buttons .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+      .modal { display: none !important; }
+      .idiomas-grid { flex-direction: column; }
+      .idioma-card { min-width: auto; }
+    }
+    @media (max-width: 480px) {
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.2rem; }
+      .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+      .skills-grid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); }
+      .skill-card i { font-size: 1.5rem; }
+      .skill-card span { font-size: 0.7rem; }
+      .soft-tag { font-size: 0.7rem; padding: 0.2rem 0.8rem; }
+      .contact-btn { font-size: 0.95rem; padding: 0.8rem 1rem; }
+      .projeto-mobile-extra .mobile-img { width: 100px; }
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .skill-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1rem .5rem;
+      text-align: center;
+      transition: .2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      animation: fadeInUp .5s ease backwards;
+    }
+    .skill-card i { font-size: 2.2rem; color: var(--destaque); }
+    .skill-card span { font-size: .85rem; font-weight: 600; }
+    .skill-card:hover {
+      border-color: var(--destaque);
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px var(--glow);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .soft-tag {
+      background: var(--destaque);
+      color: #fff;
+      padding: .4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: .85rem;
+      display: inline-block;
+      margin: .25rem;
+    }
+    .accordion-item {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .accordion-header {
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--texto);
+      transition: background 0.2s;
+    }
+    .accordion-header:hover { background: rgba(255,255,255,0.05); }
+    .accordion-header i { transition: transform 0.3s ease; }
+    .accordion-item.open .accordion-header i { transform: rotate(180deg); }
+    .accordion-content {
+      max-height: 0;
+      padding: 0 1.2rem;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--texto-sec);
+    }
+    .accordion-item.open .accordion-content {
+      max-height: 400px;
+      padding: 0 1.2rem 1rem;
+    }
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .projeto-card {
+      background: var(--card-bg);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s;
+    }
+    .projeto-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--destaque);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .projeto-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .projeto-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+    .projeto-card:hover .projeto-img img { transform: scale(1.03); }
+    .projeto-info { padding: 1.2rem; }
+    .projeto-info h3 { color: var(--titulo); margin-bottom: 0.5rem; }
+    .projeto-info p { color: var(--texto-sec); }
+    .projeto-mobile-extra { display: none; }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-content {
+      background: var(--fundo);
+      max-width: 900px;
+      width: 100%;
+      border-radius: 1.5rem;
+      border: 1px solid var(--destaque);
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      position: relative;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+    }
+    .modal-image { flex: 1.2; min-height: 280px; background: #000; }
+    .modal-image img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-text { flex: 1; padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem; }
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.8rem;
+      background: rgba(0,0,0,.5);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #fff;
+      z-index: 2;
+    }
+    footer {
+      background: var(--vidro);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
+    .idiomas-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .idioma-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: .8rem 1.2rem;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: .2s;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--texto);
+    }
+    .contact-btn i { font-size: 1.5rem; }
+    .contact-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--destaque);
+      background: var(--destaque);
+      color: #fff;
+    }
+    .contact-btn.whatsapp:hover { background: #25D366; border-color: #25D366; }
+    .contact-btn.email:hover { background: #D44638; border-color: #D44638; }
+    .form-contato {
+      background: var(--card-bg);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      border: 1px solid var(--glass-border);
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: .8rem 1rem;
+      background: var(--input-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: .8rem;
+      color: var(--texto);
+      font-family: inherit;
+      transition: .2s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--destaque);
+      box-shadow: 0 0 0 2px rgba(23,133,130,0.2);
+    }
+    textarea { resize: none; }
+    .form-status { text-align: center; margin-top: 1rem; font-weight: 500; }
+    .icon-3d-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .icon-3d {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      border-radius: 1.5rem;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+      transition: transform .3s ease;
+      object-fit: cover;
+    }
+    .icon-3d:hover { transform: scale(1.01); }
+    .skills-grid .skill-card:nth-child(1){animation-delay:0s}
+    .skills-grid .skill-card:nth-child(2){animation-delay:.05s}
+    .skills-grid .skill-card:nth-child(3){animation-delay:.1s}
+    .skills-grid .skill-card:nth-child(4){animation-delay:.15s}
+    .skills-grid .skill-card:nth-child(5){animation-delay:.2s}
+    .skills-grid .skill-card:nth-child(6){animation-delay:.25s}
+    .skills-grid .skill-card:nth-child(7){animation-delay:.3s}
+    .skills-grid .skill-card:nth-child(8){animation-delay:.35s}
+    .skills-grid .skill-card:nth-child(9){animation-delay:.4s}
+    .skills-grid .skill-card:nth-child(10){animation-delay:.45s}
+    .skills-grid .skill-card:nth-child(11){animation-delay:.5s}
+    .skills-grid .skill-card:nth-child(12){animation-delay:.55s}
+  </style>
+</head>
+<body class="theme-dark-blue">
+<div class="floating-bg" id="floatingBg"></div>
+<header id="header">
+  <nav>
+    <div class="logo" id="logoHome" tabindex="0" role="button" aria-label="KR - Voltar ao topo">KR</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu de navegação"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" data-section="hero" data-key="nav_home" aria-label="Ir para início">Início</a></li>
+      <li><a href="#sobre" data-section="sobre" data-key="nav_about" aria-label="Ir para sobre">Sobre</a></li>
+      <li><a href="#carreira" data-section="carreira" data-key="nav_career" aria-label="Ir para carreira">Carreira</a></li>
+      <li><a href="#curriculo" data-section="curriculo" data-key="nav_resume" aria-label="Ir para currículo">Currículo</a></li>
+      <li><a href="#projetos" data-section="projetos" data-key="nav_projects" aria-label="Ir para projetos">Projetos</a></li>
+      <li><a href="#contatos" data-section="contatos" data-key="nav_contact" aria-label="Ir para contatos">Contatos</a></li>
+    </ul>
+    <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Trocar idioma"><i class="fas fa-globe"></i> <span id="langText">PT</span></button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Trocar tema"><i class="fas fa-desktop"></i> <span>Tema</span></button>
+    </div>
+  </nav>
+</header>
+<main>
+  <section id="hero" class="fade-up">
+    <div class="container" style="text-align:center; padding:6rem 0 4rem">
+      <h1><span data-key="hero_greeting">Olá, eu sou</span> <span class="text-accent">Kauã Restoff</span></h1>
+      <p style="font-size:1.3rem; color:var(--texto-sec); max-width:700px; margin:1rem auto 2rem" data-key="hero_title">Desenvolvedor Full Stack • Técnico em Informática • UI/UX</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap">
+        <a href="../assets/Curriculo_Restoff.pdf" download class="btn btn-outline" aria-label="Baixar currículo em PDF" data-key="download_cv"><i class="fas fa-download"></i> Download Currículo</a>
+      </div>
+      <div style="display:flex; gap:2rem; justify-content:center; margin-top:2.5rem">
+        <a href="https://www.linkedin.com/in/kauã-restoff-2821163a0" target="_blank" rel="noopener noreferrer" style="color:var(--texto-sec); font-size:1.5rem" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/restoffkaua08-afk" target="_blank" rel="noopener noreferrer" style="color:var(--texto-sec); font-size:1.5rem" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="mailto:restoffkaua08@gmail.com" style="color:var(--texto-sec); font-size:1.5rem" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="fade-up bg-secondary">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center">
+        <div style="display:flex; justify-content:center;">
+          <div style="border-radius:1.5rem; overflow:hidden; border:2px solid var(--destaque); max-width:55%;">
+            <img src="https://i.ibb.co/fzyCP9Zp/perfil.png" alt="Kauã Restoff - foto de perfil" style="width:100%; object-fit:cover; aspect-ratio:3/4; filter:grayscale(0.4)" loading="lazy" onerror="this.src='https://placehold.co/400x500/178582/white?text=Kauã'">
+          </div>
+        </div>
+        <div>
+          <h2><span data-key="about_title">Sobre</span> <span class="text-accent" data-key="about_suffix">Mim</span></h2>
+          <p style="margin-bottom:1rem" data-key="about_p1">Sou <strong>Kauã Restoff de Oliveira</strong>, tenho 17 anos e estou cursando o ensino médio com formação técnica em Desenvolvimento de Sistemas (SENAI) e Informática (SENAC).</p>
+          <p style="margin-bottom:1rem" data-key="about_p2">Acredito que a tecnologia é a ferramenta mais poderosa para solucionar problemas reais. Ao longo da minha jornada, tenho me aprofundado em lógica de programação, arquitetura web e linguagens robustas como <strong>C, C#, Java e JavaScript</strong>.</p>
+          <p data-key="about_p3">Estou em busca da minha primeira oportunidade profissional na área de TI, como jovem aprendiz ou estagiário, trazendo vontade de aprender, dedicação e foco em resultados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="carreira" class="fade-up">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center">
+        <div>
+          <h2><span data-key="career_title">Resumo</span> <span class="text-accent" data-key="career_suffix">Profissional</span></h2>
+          <p style="margin-bottom:1rem" data-key="career_p1">Estudante do ensino médio com formações técnicas em Desenvolvimento de Sistemas (SENAI) e Informática (SENAC). Possuo conhecimentos sólidos em lógica de programação, desenvolvimento web e linguagens como C, C#, Java, JavaScript e PHP, além de HTML, CSS e bancos de dados.</p>
+          <p style="margin-bottom:1rem" data-key="career_p2">Tenho maior afinidade com desenvolvimento front-end, com foco em interface (UI) e experiência do usuário (UX), criando aplicações modernas, responsivas e intuitivas, sem deixar de lado minha capacidade de atuação no back-end.</p>
+          <p style="margin-bottom:1rem" data-key="career_p3">Um dos destaques da minha trajetória foi um projeto desenvolvido em parceria com a <strong class="text-accent">Iveco</strong>. Atuando como líder de equipe, fomos desafiados a resolver um problema real da empresa, conquistando o <span class="text-accent">1º lugar</span> em uma competição entre turmas do SENAI.</p>
+          <p data-key="career_p4">Atualmente, lidero novamente uma equipe no desenvolvimento do Trabalho de Conclusão de Curso (TCC), focado em arquitetura web e integração de APIs, fortalecendo habilidades em liderança, trabalho em equipe e resolução de problemas.</p>
+        </div>
+        <div class="icon-3d-container">
+          <img class="icon-3d" src="https://i.ibb.co/chNMkNd0/Design-sem-nome.png" alt="Ícone 3D ilustrativo" onerror="this.src='https://placehold.co/500x500/178582/white?text=3D'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="curriculo" class="fade-up bg-secondary">
+    <div class="container">
+      <h2 style="text-align:center"><span class="text-accent" data-key="resume_title">Currículo</span></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem">
+        <div><h3 data-key="academic_title">Formação Acadêmica</h3>
+          <div class="accordion-item" data-group="academic"><div class="accordion-header"><span data-key="academic_1_title">Técnico em Informática (SENAC)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="academic_1_date">Fev/2025 - Jul/2026</strong><br><span data-key="academic_1_desc">Formação focada em infraestrutura e suporte técnico. Inclui manutenção de hardware, configuração de sistemas Windows e Linux, fundamentos de redes, diagnóstico de problemas e uso de ferramentas digitais para produtividade.</span></div></div>
+          <div class="accordion-item" data-group="academic"><div class="accordion-header"><span data-key="academic_2_title">Técnico em Desenvolvimento de Sistemas (SENAI)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="academic_2_date">Fev/2025 - Jul/2026</strong><br><span data-key="academic_2_desc">Formação técnica voltada ao desenvolvimento de sistemas com aplicação prática. Abrange lógica de programação e algoritmos, construção de aplicações web, programação em C, C#, Java e JavaScript, desenvolvimento de interfaces com HTML/CSS e integração com banco de dados.</span></div></div>
+          <div class="accordion-item" data-group="academic"><div class="accordion-header"><span data-key="academic_3_title">Ensino Médio (FUNEC)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="academic_3_date">Conclusão: Dez/2026</strong><br><span data-key="academic_3_desc">Ensino médio integrado à formação técnica.</span></div></div>
+        </div>
+        <div><h3 data-key="courses_title">Cursos Complementares</h3>
+          <div class="accordion-item" data-group="courses"><div class="accordion-header"><span data-key="course_1_title">Bootcamp Java & Spring Boot (DIO)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="course_1_date">56h - 2026</strong><br><span data-key="course_1_desc">Desenvolvimento backend com Java e Spring Boot, aplicando conceitos de POO, APIs REST, gerenciamento de dependências com Maven/Gradle e versionamento com Git.</span></div></div>
+          <div class="accordion-item" data-group="courses"><div class="accordion-header"><span data-key="course_2_title">English for IT 1 (Cisco/OpenEDG)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="course_2_date">50h - 2026</strong><br><span data-key="course_2_desc">Inglês técnico aplicado à área de tecnologia, com foco em leitura de documentação, termos técnicos e comunicação profissional (nível B1).</span></div></div>
+          <div class="accordion-item" data-group="courses"><div class="accordion-header"><span data-key="course_3_title">Marketing Digital (Move Cultura)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="course_3_date">46h - 2024</strong><br><span data-key="course_3_desc">Fundamentos de marketing digital, incluindo estratégias de conteúdo, presença online e análise de engajamento em redes sociais.</span></div></div>
+          <div class="accordion-item" data-group="courses"><div class="accordion-header"><span data-key="course_4_title">Ferramentas Digitais (Move Cultura)</span> <i class="fas fa-chevron-down"></i></div><div class="accordion-content"><strong data-key="course_4_date">46h - 2024</strong><br><span data-key="course_4_desc">Uso de ferramentas digitais e pacote Office voltado para produtividade, organização e ambiente profissional.</span></div></div>
+        </div>
+      </div>
+      <div style="margin-bottom:2rem"><h3 style="text-align:center" data-key="languages_title">Idiomas</h3><div class="idiomas-grid"><div class="idioma-card"><i class="fas fa-language"></i> <strong data-key="lang_pt">Português</strong><br><span data-key="lang_pt_desc">Língua materna</span></div><div class="idioma-card"><i class="fas fa-language"></i> <strong data-key="lang_en">Inglês</strong><br><span data-key="lang_en_desc">Nível B1 - Técnico em TI (Cisco/OpenEDG)</span></div></div></div>
+      <div style="margin-bottom:2rem"><h3 style="text-align:center" data-key="soft_title">Soft Skills</h3><div style="display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem"><span class="soft-tag" data-key="soft_1">Proatividade</span><span class="soft-tag" data-key="soft_2">Trabalho em equipe</span><span class="soft-tag" data-key="soft_3">Comunicação</span><span class="soft-tag" data-key="soft_4">Liderança</span><span class="soft-tag" data-key="soft_5">Resolução de problemas</span><span class="soft-tag" data-key="soft_6">Organização</span><span class="soft-tag" data-key="soft_7">Facilidade de aprendizado</span><span class="soft-tag" data-key="soft_8">Interesse em tecnologia</span></div></div>
+      <div><h3 style="text-align:center" data-key="hard_title">Hard Skills & Tecnologias</h3><div class="skills-grid"><div class="skill-card"><i class="fab fa-html5"></i><span>HTML5</span></div><div class="skill-card"><i class="fab fa-css3-alt"></i><span>CSS3</span></div><div class="skill-card"><i class="fab fa-js"></i><span>JavaScript</span></div><div class="skill-card"><i class="fab fa-java"></i><span>Java</span></div><div class="skill-card"><i class="fas fa-code"></i><span>C#</span></div><div class="skill-card"><i class="fab fa-php"></i><span>PHP</span></div><div class="skill-card"><i class="fas fa-database"></i><span>MySQL</span></div><div class="skill-card"><i class="fas fa-leaf"></i><span>Spring Boot</span></div><div class="skill-card"><i class="fab fa-python"></i><span>Python</span></div><div class="skill-card"><i class="fab fa-git-alt"></i><span>Git</span></div><div class="skill-card"><i class="fas fa-network-wired"></i><span>Redes</span></div><div class="skill-card"><i class="fas fa-microchip"></i><span>Hardware</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="projetos" class="fade-up">
+    <div class="container"><h2 style="text-align:center"><span data-key="projects_title">Meus</span> <span class="text-accent" data-key="projects_suffix">Projetos</span></h2><div class="projetos-grid" id="projetosGrid"></div></div>
+  </section>
+
+  <section id="contatos" class="fade-up bg-secondary">
+    <div class="container" style="max-width:800px">
+      <h2 style="text-align:center"><span data-key="contact_title">Vamos</span> <span class="text-accent" data-key="contact_suffix">Conversar?</span></h2>
+      <div class="contact-buttons">
+        <a href="https://wa.me/5531971051343?text=Olá%20Kauã%2C%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20oportunidades%20na%20área%20de%20tecnologia." target="_blank" rel="noopener noreferrer" class="contact-btn whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="mailto:restoffkaua08@gmail.com?subject=Portfólio%20-%20Oportunidade%20Profissional&body=Olá%20Kauã%2C%20vi%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20oportunidades%20na%20área%20de%20tecnologia." class="contact-btn email" aria-label="E-mail"><i class="fas fa-envelope"></i> E-mail</a>
+      </div>
+      <div class="form-contato"><h3 style="text-align:center; margin-bottom:1rem" data-key="form_title">Envie uma mensagem direta</h3>
+        <form id="contactForm" action="https://formspree.io/f/xgvazkqr" method="POST">
+          <div class="form-group"><input type="text" name="name" data-key-placeholder="form_name" placeholder="Seu nome" required aria-label="Seu nome"></div>
+          <div class="form-group"><input type="email" name="email" data-key-placeholder="form_email" placeholder="Seu e-mail" required aria-label="Seu e-mail"></div>
+          <div class="form-group"><textarea name="message" rows="4" maxlength="500" data-key-placeholder="form_message" placeholder="Sua mensagem..." required aria-label="Sua mensagem"></textarea></div>
+          <button type="submit" class="btn btn-primary" style="width:100%" data-key="form_send" aria-label="Enviar mensagem">Enviar mensagem</button>
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+      <div style="display:flex; justify-content:center; gap:2rem; margin-top:2rem">
+        <a href="https://www.linkedin.com/in/kauã-restoff-2821163a0" target="_blank" rel="noopener noreferrer" style="color:var(--destaque)" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/restoffkaua08-afk" target="_blank" rel="noopener noreferrer" style="color:var(--destaque)" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2026 Kauã Restoff. Todos os direitos reservados.</p>
+  <button id="backToTop" style="background:none; border:none; margin-top:1rem; cursor:pointer; color:var(--destaque)" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i> <span data-key="back_top">Voltar ao topo</span></button>
+</footer>
+<div id="projectModal" class="modal"><div class="modal-content"><span class="close-modal" id="closeModalBtn" aria-label="Fechar modal">&times;</span><div class="modal-image"><img id="modalImg" src="" alt="projeto" loading="lazy"></div><div class="modal-text"><h3 id="modalTitle"></h3><p id="modalDesc"></p><div class="modal-buttons"><a id="modalLink" href="#" target="_blank" class="btn btn-primary" aria-label="Ver no GitHub"><i class="fab fa-github"></i> <span data-key="view_github">Ver no GitHub</span></a><a id="modalDemoLink" href="#" target="_blank" class="btn btn-secondary" aria-label="Ver demonstração"><i class="fas fa-play"></i> <span data-key="view_demo">Ver demonstração</span></a></div></div></div></div>
+
+<script>
+  const projectsData = {
+    pt: [
+      { 
+        id:1, 
+        image:'https://i.ibb.co/KjWvMhpT/nubenc.jpg', 
+        title:'Experiência Bancária Web', 
+        tech:'HTML, CSS, JavaScript', 
+        desc:'Simulação de interface bancária moderna inspirada no Nubank, com foco em responsividade e experiência do usuário. O projeto explora organização de layout, microinterações e adaptação entre dispositivos, replicando padrões reais de aplicações financeiras.', 
+        github:'https://github.com/Danielmsouza-dev/nubank-website.git', 
+        demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_desenvolvimentoweb-frontend-javascript-activity-7454243790686474240-GJke' 
+      },
+      { 
+        id:2, 
+        image:'https://i.ibb.co/Vc5hJscp/Captura-de-tela-2026-04-26-151300.png', 
+        title:'Sistema de Adoção de Pets', 
+        tech:'PHP, MySQL, HTML, CSS, JS', 
+        desc:'Aplicação web completa com autenticação de usuários, cadastro e gerenciamento de pets (CRUD) e persistência em banco de dados. Estruturado com separação entre frontend e backend, focando em organização lógica e fluxo de dados.', 
+        github:'https://github.com/restoffkaua08-afk/S_A_ado-ao_de_pets.git', 
+        demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_senai-desenvolvimentodesistemas-programacao-ugcPost-7453537976371961857-7mZm' 
+      },
+      { 
+        id:3, 
+        image:'https://i.ibb.co/rR9BB1Bj/Captura-de-tela-2026-04-25-170447.png', 
+        title:'Plataforma de Streaming Musical', 
+        tech:'HTML, CSS, JavaScript', 
+        desc:'Clone funcional do Spotify com player de música, controle de reprodução e interface dinâmica. Projeto centrado em manipulação de DOM, eventos e construção de uma experiência fluida para o usuário.', 
+        github:'https://github.com/restoffkaua08-afk/Sportfy_Clone.git', 
+        demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_frontend-html-css-ugcPost-7453909712091353088-jD4W' 
+      },
+      { 
+        id:4, 
+        image:'https://i.ibb.co/4nrJLYRL/Captura-de-tela-2026-05-01-212014.png', 
+        title:'Guia-Warzone', 
+        tech:'HTML, CSS, JavaScript', 
+        desc:'Plataforma interativa voltada para iniciantes, com análise de armas, sugestões de loadouts e organização estratégica de informações. Foco em clareza visual e navegação intuitiva.', 
+        github:'https://github.com/restoffkaua08-afk/Projeto-integrador-pessoal.git', 
+        demo:'' 
+      },
+      { 
+        id:5, 
+        image:'https://i.ibb.co/jPm4GK5J/Captura-de-tela-2026-05-01-114209.png', 
+        title:'Vitrine Digital', 
+        tech:'React, PHP, HTML, CSS, JS, SQL', 
+        desc:'Aplicação web com listagem de produtos, sistema de busca e filtros dinâmicos. Integra frontend em React com backend em PHP e banco de dados, direcionando usuários para lojas externas.', 
+        github:'https://github.com/restoffkaua08-afk/Loja_web_Vitrine.git', 
+        demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_frontend-react-php-activity-7455995432943382528-o0hg' 
+      }
+    ],
+    en: [
+      { id:1, image:'https://i.ibb.co/KjWvMhpT/nubenc.jpg', title:'Web Banking Experience', tech:'HTML, CSS, JavaScript', desc:'Simulation of a modern bank interface inspired by Nubank, focusing on responsiveness and user experience.', github:'https://github.com/Danielmsouza-dev/nubank-website.git', demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_desenvolvimentoweb-frontend-javascript-activity-7454243790686474240-GJke' },
+      { id:2, image:'https://i.ibb.co/Vc5hJscp/Captura-de-tela-2026-04-26-151300.png', title:'Pet Adoption System', tech:'PHP, MySQL, HTML, CSS, JS', desc:'Complete web application with user authentication, pet management (CRUD) and database persistence.', github:'https://github.com/restoffkaua08-afk/S_A_ado-ao_de_pets.git', demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_senai-desenvolvimentodesistemas-programacao-ugcPost-7453537976371961857-7mZm' },
+      { id:3, image:'https://i.ibb.co/rR9BB1Bj/Captura-de-tela-2026-04-25-170447.png', title:'Music Streaming Platform', tech:'HTML, CSS, JavaScript', desc:'Functional Spotify clone with music player, playback control and dynamic interface.', github:'https://github.com/restoffkaua08-afk/Sportfy_Clone.git', demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_frontend-html-css-ugcPost-7453909712091353088-jD4W' },
+      { id:4, image:'https://i.ibb.co/4nrJLYRL/Captura-de-tela-2026-05-01-212014.png', title:'Warzone Guide', tech:'HTML, CSS, JavaScript', desc:'Interactive platform for beginners, with weapon analysis, loadout suggestions and strategic information organization.', github:'https://github.com/restoffkaua08-afk/Projeto-integrador-pessoal.git', demo:'' },
+      { id:5, image:'https://i.ibb.co/jPm4GK5J/Captura-de-tela-2026-05-01-114209.png', title:'Digital Showcase', tech:'React, PHP, HTML, CSS, JS, SQL', desc:'Web application with product listing, search and dynamic filters, integrating React frontend with PHP backend and database.', github:'https://github.com/restoffkaua08-afk/Loja_web_Vitrine.git', demo:'https://www.linkedin.com/posts/kau%C3%A3-restoff-2821163a0_frontend-react-php-activity-7455995432943382528-o0hg' }
+    ]
+  };
+
+  let currentLang = 'pt';
+  let currentProjects = projectsData.pt;
+
+  function renderProjects() {
+    const grid = document.getElementById('projetosGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    currentProjects.forEach(proj => {
+      const card = document.createElement('div');
+      card.className = 'projeto-card';
+      const imgSrc = proj.image || 'https://placehold.co/600x338/178582/white?text=' + encodeURIComponent(proj.title);
+      card.innerHTML = `
+        <div class="projeto-img"><img src="${imgSrc}" alt="${proj.title}" loading="lazy" onerror="this.src='https://placehold.co/600x338/178582/white?text=${encodeURIComponent(proj.title)}'"></div>
+        <div class="projeto-info">
+          <h3>${proj.title}</h3>
+          <p>${proj.tech}</p>
+          <p>${proj.desc.substring(0,80)}...</p>
+        </div>
+        <div class="projeto-mobile-extra">
+          <div class="mobile-content">
+            <img class="mobile-img" src="${imgSrc}" alt="${proj.title}">
+            <div class="mobile-info">
+              <p>${proj.desc}</p>
+              <div class="mobile-buttons">
+                <a href="${proj.github}" target="_blank" class="btn btn-primary" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
+                ${proj.demo && proj.demo !== '' ? `<a href="${proj.demo}" target="_blank" class="btn btn-secondary" aria-label="Demonstração"><i class="fas fa-play"></i> Demo</a>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.btn')) return;
+        if (window.innerWidth <= 768) card.classList.toggle('expanded');
+        else openModal(proj);
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function openModal(proj) {
+    const imgSrc = proj.image || 'https://placehold.co/800x450/178582/white?text=' + encodeURIComponent(proj.title);
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalTitle').innerText = proj.title;
+    document.getElementById('modalDesc').innerHTML = `<strong>${proj.tech}</strong><br>${proj.desc}`;
+    document.getElementById('modalLink').href = proj.github;
+    const demoLink = document.getElementById('modalDemoLink');
+    if (proj.demo && proj.demo !== '') {
+      demoLink.href = proj.demo;
+      demoLink.style.display = 'inline-flex';
+    } else demoLink.style.display = 'none';
+    document.getElementById('projectModal').style.display = 'flex';
+  }
+
+  document.getElementById('closeModalBtn').onclick = () => document.getElementById('projectModal').style.display = 'none';
+  window.onclick = (e) => { if(e.target === document.getElementById('projectModal')) document.getElementById('projectModal').style.display = 'none'; };
+
+  const translations = {
+    pt: {
+      nav_home: "Início", nav_about: "Sobre", nav_career: "Carreira", nav_resume: "Currículo", nav_projects: "Projetos", nav_contact: "Contatos",
+      hero_greeting: "Olá, eu sou", hero_title: "Desenvolvedor Full Stack • Técnico em Informática • UI/UX", download_cv: "Download Currículo",
+      about_title: "Sobre", about_suffix: "Mim",
+      about_p1: "Sou Kauã Restoff de Oliveira, tenho 17 anos e estou cursando o ensino médio com formação técnica em Desenvolvimento de Sistemas (SENAI) e Informática (SENAC).",
+      about_p2: "Acredito que a tecnologia é a ferramenta mais poderosa para solucionar problemas reais. Ao longo da minha jornada, tenho me aprofundado em lógica de programação, arquitetura web e linguagens robustas como C, C#, Java e JavaScript.",
+      about_p3: "Estou em busca da minha primeira oportunidade profissional na área de TI, como jovem aprendiz ou estagiário, trazendo vontade de aprender, dedicação e foco em resultados.",
+      career_title: "Resumo", career_suffix: "Profissional",
+      career_p1: "Estudante do ensino médio com formações técnicas em Desenvolvimento de Sistemas (SENAI) e Informática (SENAC). Possuo conhecimentos sólidos em lógica de programação, desenvolvimento web e linguagens como C, C#, Java, JavaScript e PHP, além de HTML, CSS e bancos de dados.",
+      career_p2: "Tenho maior afinidade com desenvolvimento front-end, com foco em interface (UI) e experiência do usuário (UX), criando aplicações modernas, responsivas e intuitivas, sem deixar de lado minha capacidade de atuação no back-end.",
+      career_p3: "Um dos destaques da minha trajetória foi um projeto desenvolvido em parceria com a Iveco. Atuando como líder de equipe, fomos desafiados a resolver um problema real da empresa, conquistando o 1º lugar em uma competição entre turmas do SENAI.",
+      career_p4: "Atualmente, lidero novamente uma equipe no desenvolvimento do Trabalho de Conclusão de Curso (TCC), focado em arquitetura web e integração de APIs, fortalecendo habilidades em liderança, trabalho em equipe e resolução de problemas.",
+      resume_title: "Currículo", academic_title: "Formação Acadêmica", courses_title: "Cursos Complementares",
+      academic_1_title: "Técnico em Informática (SENAC)", academic_1_date: "Fev/2025 - Jul/2026", academic_1_desc: "Formação focada em infraestrutura e suporte técnico. Inclui manutenção de hardware, configuração de sistemas Windows e Linux, fundamentos de redes, diagnóstico de problemas e uso de ferramentas digitais para produtividade.",
+      academic_2_title: "Técnico em Desenvolvimento de Sistemas (SENAI)", academic_2_date: "Fev/2025 - Jul/2026", academic_2_desc: "Formação técnica voltada ao desenvolvimento de sistemas com aplicação prática. Abrange lógica de programação e algoritmos, construção de aplicações web, programação em C, C#, Java e JavaScript, desenvolvimento de interfaces com HTML/CSS e integração com banco de dados.",
+      academic_3_title: "Ensino Médio (FUNEC)", academic_3_date: "Conclusão: Dez/2026", academic_3_desc: "Ensino médio integrado à formação técnica.",
+      course_1_title: "Bootcamp Java & Spring Boot (DIO)", course_1_date: "56h - 2026", course_1_desc: "Desenvolvimento backend com Java e Spring Boot, aplicando conceitos de POO, APIs REST, gerenciamento de dependências com Maven/Gradle e versionamento com Git.",
+      course_2_title: "English for IT 1 (Cisco/OpenEDG)", course_2_date: "50h - 2026", course_2_desc: "Inglês técnico aplicado à área de tecnologia, com foco em leitura de documentação, termos técnicos e comunicação profissional (nível B1).",
+      course_3_title: "Marketing Digital (Move Cultura)", course_3_date: "46h - 2024", course_3_desc: "Fundamentos de marketing digital, incluindo estratégias de conteúdo, presença online e análise de engajamento em redes sociais.",
+      course_4_title: "Ferramentas Digitais (Move Cultura)", course_4_date: "46h - 2024", course_4_desc: "Uso de ferramentas digitais e pacote Office voltado para produtividade, organização e ambiente profissional.",
+      languages_title: "Idiomas", lang_pt: "Português", lang_pt_desc: "Língua materna", lang_en: "Inglês", lang_en_desc: "Nível B1 - Técnico em TI (Cisco/OpenEDG)",
+      soft_title: "Soft Skills", soft_1: "Proatividade", soft_2: "Trabalho em equipe", soft_3: "Comunicação", soft_4: "Liderança", soft_5: "Resolução de problemas", soft_6: "Organização", soft_7: "Facilidade de aprendizado", soft_8: "Interesse em tecnologia",
+      hard_title: "Hard Skills & Tecnologias",
+      projects_title: "Meus", projects_suffix: "Projetos",
+      contact_title: "Vamos", contact_suffix: "Conversar?",
+      back_top: "Voltar ao topo", view_github: "Ver no GitHub", view_demo: "Ver demonstração",
+      form_title: "Envie uma mensagem direta", form_name: "Seu nome", form_email: "Seu e-mail", form_message: "Sua mensagem...", form_send: "Enviar mensagem"
+    },
+    en: {
+      nav_home: "Home", nav_about: "About", nav_career: "Career", nav_resume: "Resume", nav_projects: "Projects", nav_contact: "Contact",
+      hero_greeting: "Hello, I'm", hero_title: "Full Stack Developer • IT Technician • UI/UX", download_cv: "Download Resume",
+      about_title: "About", about_suffix: "Me",
+      about_p1: "I'm Kauã Restoff de Oliveira, 17 years old, in high school with technical training in Systems Development (SENAI) and IT (SENAC).",
+      about_p2: "I believe technology is the most powerful tool to solve real problems. I've deepened my knowledge in programming logic, web architecture, and languages like C, C#, Java, and JavaScript.",
+      about_p3: "I'm looking for my first IT opportunity as a trainee or apprentice, bringing willingness to learn, dedication, and focus on results.",
+      career_title: "Summary", career_suffix: "",
+      career_p1: "High school student with technical training in Systems Development (SENAI) and IT (SENAC). Solid knowledge in programming logic, web development, and languages like C, C#, Java, JavaScript, PHP, plus HTML, CSS, and databases.",
+      career_p2: "I have greater affinity with front-end development, focusing on UI and UX, creating modern, responsive, intuitive applications, while also being capable in back-end.",
+      career_p3: "A highlight of my journey was a project developed in partnership with Iveco. As team leader, we solved a real company problem, winning 1st place in a competition among SENAI classes.",
+      career_p4: "Currently, I'm leading my team again in the Course Conclusion Project (TCC), focused on web architecture and API integration, strengthening leadership, teamwork, and problem-solving skills.",
+      resume_title: "Resume", academic_title: "Academic Background", courses_title: "Complementary Courses",
+      academic_1_title: "IT Technician (SENAC)", academic_1_date: "Feb/2025 - Jul/2026", academic_1_desc: "Focus on infrastructure and technical support. Includes hardware maintenance, Windows/Linux configuration, networking fundamentals, troubleshooting, and digital tools for productivity.",
+      academic_2_title: "Systems Development Technician (SENAI)", academic_2_date: "Feb/2025 - Jul/2026", academic_2_desc: "Technical training focused on system development with practical application. Covers programming logic, web applications, C, C#, Java, JavaScript, HTML/CSS, and database integration.",
+      academic_3_title: "High School (FUNEC)", academic_3_date: "Completion: Dec/2026", academic_3_desc: "High school integrated with technical training.",
+      course_1_title: "Java & Spring Boot Bootcamp (DIO)", course_1_date: "56h - 2026", course_1_desc: "Backend development with Java and Spring Boot, applying OOP, REST APIs, dependency management with Maven/Gradle, and Git versioning.",
+      course_2_title: "English for IT 1 (Cisco/OpenEDG)", course_2_date: "50h - 2026", course_2_desc: "Technical English applied to technology, focusing on documentation reading, technical terms, and professional communication (B1 level).",
+      course_3_title: "Digital Marketing (Move Cultura)", course_3_date: "46h - 2024", course_3_desc: "Fundamentals of digital marketing, including content strategies, online presence, and social media engagement analysis.",
+      course_4_title: "Digital Tools (Move Cultura)", course_4_date: "46h - 2024", course_4_desc: "Use of digital tools and Office suite for productivity, organization, and professional environment.",
+      languages_title: "Languages", lang_pt: "Portuguese", lang_pt_desc: "Native", lang_en: "English", lang_en_desc: "B1 level - IT Technician (Cisco/OpenEDG)",
+      soft_title: "Soft Skills", soft_1: "Proactivity", soft_2: "Teamwork", soft_3: "Communication", soft_4: "Leadership", soft_5: "Problem Solving", soft_6: "Organization", soft_7: "Ease of Learning", soft_8: "Interest in Technology",
+      hard_title: "Hard Skills & Technologies",
+      projects_title: "My", projects_suffix: "Projects",
+      contact_title: "Let's", contact_suffix: "talk?",
+      back_top: "Back to top", view_github: "View on GitHub", view_demo: "View demo",
+      form_title: "Send a direct message", form_name: "Your name", form_email: "Your email", form_message: "Your message...", form_send: "Send message"
+    }
+  };
+
+  function applyLanguage(lang) {
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.getAttribute('data-key');
+      if (translations[lang][key]) el.innerText = translations[lang][key];
+    });
+    document.querySelectorAll('[data-key-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-key-placeholder');
+      if (translations[lang][key]) el.placeholder = translations[lang][key];
+    });
+    currentProjects = projectsData[lang];
+    renderProjects();
+    document.getElementById('langText').innerText = lang.toUpperCase();
+    localStorage.setItem('portfolio-lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('portfolio-lang') || 'pt';
+  currentLang = savedLang;
+  applyLanguage(currentLang);
+  document.getElementById('langToggle').addEventListener('click', () => {
+    currentLang = currentLang === 'pt' ? 'en' : 'pt';
+    applyLanguage(currentLang);
+  });
+
+  const textarea = document.querySelector('#contactForm textarea');
+  const charCountSpan = document.getElementById('charCount');
+  if (textarea && charCountSpan) {
+    textarea.addEventListener('input', function() { charCountSpan.innerText = this.value.length; });
+    charCountSpan.innerText = textarea.value.length;
+  }
+
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    header.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      const group = item.getAttribute('data-group');
+      if (group) {
+        document.querySelectorAll(`.accordion-item[data-group="${group}"]`).forEach(i => { if (i !== item) i.classList.remove('open'); });
+      }
+      if (isOpen) item.classList.remove('open');
+      else item.classList.add('open');
+    });
+  });
+
+  let currentTheme = 'dark-blue';
+  const themes = ['light', 'dark-blue', 'dark-black'];
+  const themeIcons = { light: 'fa-sun', 'dark-blue': 'fa-desktop', 'dark-black': 'fa-moon' };
+  function setTheme(theme) {
+    document.body.classList.remove('theme-light', 'theme-dark-blue', 'theme-dark-black');
+    document.body.classList.add(`theme-${theme}`);
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.querySelector('i').className = `fas ${themeIcons[theme]}`;
+    localStorage.setItem('portfolio-theme', theme);
+    currentTheme = theme;
+  }
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark-blue';
+  setTheme(savedTheme);
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const idx = themes.indexOf(currentTheme);
+    setTheme(themes[(idx + 1) % themes.length]);
+  });
+
+  const sections = ['hero','sobre','carreira','curriculo','projetos','contatos'];
+  const navLinks = document.querySelectorAll('.nav-links a');
+  function updateActive() {
+    const scrollPos = window.scrollY + 120;
+    let current = 'hero';
+    for (let s of sections) {
+      const el = document.getElementById(s);
+      if (el && el.offsetTop <= scrollPos) current = s;
+    }
+    navLinks.forEach(link => {
+      if (link.getAttribute('data-section') === current) link.classList.add('active');
+      else link.classList.remove('active');
+    });
+  }
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById(link.getAttribute('data-section')).scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('navLinks')?.classList.remove('active');
+    });
+  });
+  document.getElementById('logoHome').addEventListener('click', () => document.getElementById('hero').scrollIntoView({ behavior: 'smooth' }));
+  document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('active'));
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) document.getElementById('header').classList.add('scrolled');
+    else document.getElementById('header').classList.remove('scrolled');
+  });
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => obs.observe(el));
+  const bgDiv = document.getElementById('floatingBg');
+  function createRings() {
+    bgDiv.innerHTML = '';
+    const grads = ['linear-gradient(135deg,#178582,#0A1828)','linear-gradient(135deg,#0A1828,#178582)','linear-gradient(135deg,#178582,#BFA181)'];
+    for (let i = 0; i < 3; i++) {
+      const ring = document.createElement('div');
+      ring.className = 'ring';
+      const size = 300 + Math.random() * 200;
+      ring.style.width = size + 'px';
+      ring.style.height = size + 'px';
+      ring.style.background = grads[i % 3];
+      ring.style.left = Math.random() * 100 + '%';
+      ring.style.top = Math.random() * 100 + '%';
+      ring.style.animationDelay = i * 2 + 's';
+      ring.style.animationDuration = 15 + i * 2 + 's';
+      bgDiv.appendChild(ring);
+    }
+  }
+  createRings();
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formStatus.innerHTML = '<span style="color:cyan;">Enviando...</span>';
+      const fd = new FormData(contactForm);
+      try {
+        const resp = await fetch(contactForm.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+        if (resp.ok) {
+          formStatus.innerHTML = '<span style="color:lightgreen;">✅ Mensagem enviada! Entrarei em contato em breve.</span>';
+          contactForm.reset();
+          if (textarea && charCountSpan) charCountSpan.innerText = '0';
+        } else formStatus.innerHTML = '<span style="color:salmon;">❌ Erro. Tente pelo WhatsApp ou e-mail.</span>';
+      } catch { formStatus.innerHTML = '<span style="color:salmon;">❌ Falha na conexão. Use os botões de contato.</span>'; }
+    });
+  }
+</script>
+</body>
+</html>
